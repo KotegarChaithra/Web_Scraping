@@ -1,0 +1,20 @@
+import requests
+from bs4 import BeautifulSoup
+
+url ="https://www.webscraper.io/test-sites/e-commerce/allinone/"
+r = requests.get(url)
+soup = BeautifulSoup(r.text,"lxml")
+tag = soup.div.p#To get contents of P tag from the website, first<div> tag and first <p> tag 
+print(tag)
+
+#If I want to print string from <p> tag
+tag = soup.div.p.string
+print(tag)
+
+#or we can use string with tag like below
+tag = soup.div.p
+print(tag.string)
+
+#If we have <p> tag in <header> tag
+tag = soup.header.div.a.button.span
+print(tag.string)
