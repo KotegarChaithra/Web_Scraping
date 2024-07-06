@@ -1,0 +1,28 @@
+import requests
+from bs4 import BeautifulSoup
+
+url = "https://webscraper.io/test-sites/e-commerce/allinone/computers/tablets"
+r = requests.get(url)
+
+soup = BeautifulSoup(r.text,"lxml")
+
+prices = soup.find_all("h4", class_="price float-end card-title pull-right")
+print(prices)
+print(len(prices))# length of prices
+print(prices[3].text)#to get particular price of it is in text
+
+# #to iterate over prices
+for i in prices:
+    # print(i)
+    print(i.text)#to get text
+
+#to get description
+desc = soup.find_all("p",class_="description card-text")
+print(desc)
+print(desc[3])# to get description of 3rd box
+
+for i in desc:
+    print(i.text)
+
+
+
